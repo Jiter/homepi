@@ -27,3 +27,30 @@ services:
       - /containers/cloud/nextcloud/apps:/var/www/html/apps
       - /containers/cloud/nextcloud/config:/var/www/html/config
       - /containers/cloud/nextcloud/data:/var/www/html/data
+  nginxmanager:
+      image: 'jc21/nginx-proxy-manager:latest'
+      restart: always
+      ports:
+        # Public HTTP Port:
+        - '80:80'
+        # Public HTTPS Port:
+        - '443:443'
+        # Admin Web Port:
+        - '81:81'
+      environment:
+        # These are the settings to access your db
+        DB_MYSQL_HOST: "nextcloud-db"
+        DB_MYSQL_PORT: 3306
+        DB_MYSQL_USER: "nextcloud"
+        DB_MYSQL_PASSWORD: "4jh4k3"
+        DB_MYSQL_NAME: "npm"
+        # If you would rather use Sqlite uncomment this
+        # and remove all DB_MYSQL_* lines above
+        # DB_SQLITE_FILE: "/data/database.sqlite"
+        # Uncomment this if IPv6 is not enabled on your host
+        # DISABLE_IPV6: 'true'
+      volumes:
+        - ./data:/data
+        - ./letsencrypt:/etc/letsencrypt
+      depends_on:
+        - db
