@@ -1,0 +1,100 @@
+{
+	"devices": {
+		"1": {
+			"protocol": [ "elro_800_switch" ],
+			"id": [{
+				"systemcode": 23,
+				"unitcode": 1
+			}],
+			"state": "on"
+		},
+		"2": {
+			"protocol": [ "elro_800_switch" ],
+			"id": [{
+				"systemcode": 23,
+				"unitcode": 2
+			}],
+			"state": "on"
+		},
+		"3": {
+			"protocol": [ "elro_800_switch" ],
+			"id": [{
+				"systemcode": 23,
+				"unitcode": 4
+			}],
+			"state": "off"
+		},
+		"4": {
+			"protocol": [ "elro_800_switch" ],
+			"id": [{
+				"systemcode": 23,
+				"unitcode": 8
+			}],
+			"state": "off"
+		}
+	},
+	"rules": {},
+	"gui": {
+		"1": {
+			"name": "TV-Backlight",
+			"group": [ "Beleuchtung" ],
+			"media": [ "all" ]
+		},
+		"2": {
+			"name": "Kugel",
+			"group": [ "Beleuchtung" ],
+			"media": [ "all" ]
+		},
+		"3": {
+			"name": "Druckerei",
+			"group": [ "Beleuchtung" ],
+			"media": [ "all" ]
+		},
+		"4": {
+			"name": "Bianca dont push",
+			"group": [ "Beleuchtung" ],
+			"media": [ "all" ]
+		}
+	},
+	"settings": {
+		"log-level": 6,
+		"pid-file": "/var/run/pilight.pid",
+		"log-file": "/var/log/pilight.log",
+		"standalone": 1,
+		"webserver-enable": 1,
+		"webserver-root": "/usr/local/share/pilight/webgui",
+		"webserver-http-port": 5001,
+		"webserver-https-port": 5002,
+		"webserver-cache": 1,
+		"whitelist": "",
+		"gpio-platform": "raspberrypi3"
+	},
+	"hardware": {
+		"433gpio": {
+			"sender": 8,
+			"receiver": 9
+		}
+	},
+	"registry": {
+		"webserver": {
+			"ssl": {
+				"certificate": {
+					"location": "/etc/pilight/pilight.pem"
+				}
+			}
+		},
+		"pilight": {
+			"version": {
+				"current": "8.1.5"
+			}
+		},
+		"hardware": {
+			"RF433": {
+				"mingaplen": 4420,
+				"maxgaplen": 72900,
+				"minrawlen": 26,
+				"maxrawlen": 400
+			}
+		}
+	}
+}
