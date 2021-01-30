@@ -12,12 +12,20 @@ services:
       - "80:80/tcp"
       - "443:443/tcp"
     environment:
-      TZ: 'America/Chicago'
+      TZ: 'Europe/Berlin'
       WEBPASSWORD: 'Spamizic!'
+      DNS1: 208.67.222.123
+      DNS2: 208.67.220.123
+      ServerIP: 192.168.178.50
+      REV_SERVER: "true"
+      REV_SERVER_DOMAIN: "fritz.box"
+      REV_SERVER_TARGET: 192.168.178.1
+      REV_SERVER_CIDR: 192.168.178.0/24      
+
     # Volumes store your data between container upgrades
     volumes:
       - '/containers/pihole/pihole/:/etc/pihole/'
-      - '/containers/pihole/dnsmasq/:/etc/dnsmasq.d/'
+      - '/containers/pihole/dnsmasq.d/:/etc/dnsmasq.d/'
     # Recommended but not required (DHCP needs NET_ADMIN)
     #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
     cap_add:
